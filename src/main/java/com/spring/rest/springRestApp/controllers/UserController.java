@@ -24,9 +24,17 @@ public class UserController {
 	@Autowired
 	UserRepository userRepository;
 	
+//	@PostMapping("/users")
+//	public User addUser( @RequestBody User user) {
+//	    return userRepository.save(user);
+//	}
+	
 	@PostMapping("/users")
-	public User addUser( @RequestBody User user) {
-	    return userRepository.save(user);
+	public User addUser(@RequestParam String name) {
+		User u = new User();
+		u.setName(name);	
+		return userRepository.save(u);
+		
 	}
 	
 	@RequestMapping("/users")
